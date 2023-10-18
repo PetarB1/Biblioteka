@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="559ac4604b7a424d94250402c41ac709" Name="Diagram1">
+        <EntityTypeShape EntityType="BibliotekaModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.AspNetUsers" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Autori" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Clanovi" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.IzdanjaKnjiga" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.IzdavackeKuce" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Kategorije" Width="1.5" PointX="1.5" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Knjige" Width="1.5" PointX="1.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.Pozajmice" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.PrimjerciKnjiga" Width="1.5" PointX="6" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotekaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BibliotekaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_Pozajmice_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_Knjige_Autori" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_Pozajmice_Clanovi" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_IzdanjaKnjiga_IzdavackeKuce" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_IzdanjaKnjiga_Knjige" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_PrimjerciKnjiga_IzdanjaKnjiga" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_Knjige_Kategorije" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.FK_Pozajmice_PrimjerciKnjiga" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotekaModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

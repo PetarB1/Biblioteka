@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Biblioteka.Models.IzdanjaKnjiga>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Izdanja knjiga</h2>
+
+<p>
+    @Html.ActionLink("Novo izdanje", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Godina Izdanja
+        </th>
+        <th>
+            Broj Na Stanju
+        </th>
+        <th>
+            Broj Izdatih
+        </th>
+        <th>
+            Izdavacka Kuca
+        </th>
+        <th>
+            Naslov Knjige
+        </th>
+        <th>
+            Slika Korica
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Godina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrojNaStanju)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrojIzdatih)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IzdavackeKuce.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Knjige.Naslov)
+        </td>
+        
+        <td>
+            @if (!string.IsNullOrEmpty(item.SlikaKorica))
+            {
+                <img src="@Url.Content(item.SlikaKorica)" alt="Slika korica" width="200" />
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Izmjeni", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Izbriši", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

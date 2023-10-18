@@ -1,0 +1,71 @@
+﻿@model Biblioteka.Models.Knjige
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Knjige</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="Naslov">Naslov</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Naslov, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Naslov, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="AutorId">Autor</label>
+        @Html.DropDownListFor(model => model.AutorId, ViewBag.AutoriList as SelectList, "Izaberite autora", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.AutorId,"", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="GodinaOriginala">Godina originala</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GodinaOriginala, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GodinaOriginala, "", new { @class = "text-danger" })
+        </div>
+    </div>
+<div class="form-group">
+    <label for="KategorijaId">Kategorija</label>
+    @Html.DropDownList("KategorijaId", ViewBag.KategorijeList as SelectList, "Izaberite kategoriju", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.KategorijaId, "", new { @class = "text-danger" })
+</div>
+
+
+    <div class="form-group">
+        <label for="BrojNaStanju">Broj na stanju</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BrojNaStanju, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BrojNaStanju, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="BrojIzdatih">Broj izdatih</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BrojIzdatih, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BrojIzdatih, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Napravi" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Nazad na listu", "Index")
+</div>

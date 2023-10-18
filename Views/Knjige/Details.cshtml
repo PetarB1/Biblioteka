@@ -1,0 +1,67 @@
+﻿@model Biblioteka.Models.Knjige
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4>Knjiga</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naslov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naslov)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GodinaOriginala)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GodinaOriginala)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojNaStanju)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojNaStanju)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojIzdatih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojIzdatih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Autori.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Autori.Ime)
+            @Html.DisplayFor(model => model.Autori.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategorije.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategorije.Naziv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmjeni", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Nazad na listu", "Index")
+</p>

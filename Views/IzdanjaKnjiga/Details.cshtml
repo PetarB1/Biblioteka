@@ -1,0 +1,68 @@
+﻿@model Biblioteka.Models.IzdanjaKnjiga
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Izdanje Knjige</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SlikaKorica)
+        </dt>
+
+        <dd>
+            @if (!string.IsNullOrEmpty(Model.SlikaKorica))
+            {
+                <img src="@Url.Content(Model.SlikaKorica)" alt="Slika korica" width="200" />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Godina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Godina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojNaStanju)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojNaStanju)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojIzdatih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojIzdatih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IzdavackeKuce.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IzdavackeKuce.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Knjige.Naslov)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Knjige.Naslov)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmjeni", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Nazad na listu", "Index")
+</p>
