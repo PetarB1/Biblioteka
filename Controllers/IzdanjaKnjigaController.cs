@@ -38,15 +38,16 @@ namespace Biblioteka.Controllers
         }
 
         // GET: IzdanjaKnjiga/Create
+        [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.IzdavackaKucaId = new SelectList(db.IzdavackeKuce, "Id", "Naziv");
-            ViewBag.KnjigeId = new SelectList(db.Knjige, "Id", "Naslov");
+            ViewBag.IzdavackaKucaId = new SelectList(db.IzdavackeKuce.ToList(), "Id", "Naziv");
+            ViewBag.KnjigeId = new SelectList(db.Knjige.ToList(), "Id", "Naslov");
             return View();
         }
 
         // POST: IzdanjaKnjiga/Create
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IzdanjaKnjiga izdanjaKnjigaModel)
@@ -65,7 +66,7 @@ namespace Biblioteka.Controllers
                 _context.SaveChanges();
             }
             ModelState.Clear();
-            return View();
+            return RedirectToAction("Index");
         }
         // GET: IzdanjaKnjiga/Edit/5
         public ActionResult Edit(int? id)
@@ -87,17 +88,44 @@ namespace Biblioteka.Controllers
         // POST: IzdanjaKnjiga/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,KnjigeId,IzdavackaKucaId,SlikaKorica,Godina,BrojNaStanju,BrojIzdatih")] IzdanjaKnjiga izdanjaKnjiga)
+        public ActionResult Edit([Bind(Include = "Id,KnjigeId,IzdavackaKucaId,SlikaKorica,Godina,BrojNaStanju,BrojIzdatih")] IzdanjaKnjiga izdanjaKnjiga, HttpPostedFileBase newFileSlikaKorica)
         {
             if (ModelState.IsValid)
             {
+                if (newFileSlikaKorica != null && newFileSlikaKorica.ContentLength > 0)
+                {
+                
+                    string fileName = Path.GetFileNameWithoutExtension(newFileSlikaKorica.FileName);
+                    string extension = Path.GetExtension(newFileSlikaKorica.FileName);
+
+                    fileName = fileName + DateTime.Now.ToString("yyMMddHHmmssfff") + extension;
+                    izdanjaKnjiga.SlikaKorica = "~/Images/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                    newFileSlikaKorica.SaveAs(fileName);
+                }
+
                 db.Entry(izdanjaKnjiga).State = EntityState.Modified;
+
+                
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
+
+            
             ViewBag.IzdavackaKucaId = new SelectList(db.IzdavackeKuce, "Id", "Naziv", izdanjaKnjiga.IzdavackaKucaId);
             ViewBag.KnjigeId = new SelectList(db.Knjige, "Id", "Naslov", izdanjaKnjiga.KnjigeId);
             return View(izdanjaKnjiga);
+            //    if (ModelState.IsValid)
+            //    {
+            //        db.Entry(izdanjaKnjiga).State = EntityState.Modified;
+            //        db.SaveChanges();
+            //        return RedirectToAction("Index");
+            //    }
+            //    ViewBag.IzdavackaKucaId = new SelectList(db.IzdavackeKuce, "Id", "Naziv", izdanjaKnjiga.IzdavackaKucaId);
+            //    ViewBag.KnjigeId = new SelectList(db.Knjige, "Id", "Naslov", izdanjaKnjiga.KnjigeId);
+            //    return View(izdanjaKnjiga);
+
         }
 
         // GET: IzdanjaKnjiga/Delete/5

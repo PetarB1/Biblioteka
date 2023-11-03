@@ -14,7 +14,7 @@ namespace Biblioteka.Models
         class IzdanjaKnjigaMetadata
         {
             [DisplayName("Slika korica")]
-            public string SlikaKorica { get; set; }//putanja do fajla
+            public string SlikaKorica { get; set; }
             [Required]
             public int Godina { get; set; }
             [Required]

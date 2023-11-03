@@ -7,7 +7,7 @@
 
 <h2>Novo izdanje</h2>
 <hr />
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "IzdanjaKnjiga", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
